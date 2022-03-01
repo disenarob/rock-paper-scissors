@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper scissors</title>
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
     <div class="game">
-    <h1>Rock, paper, scissors!</h1>
-    </div>
+        <h1>Rock, paper, scissors!</h1>
+        <h2>5 points win</h2>
+
 
     <div class="button-flex">
         <div class="button">
@@ -25,6 +28,18 @@
         </div>
     </div>
     <h2 id="message"></h2>
+
+    <div id="results" class="results">
+        <div>
+            <h3>Player:</h3>
+            <span id="player-score"></span>
+        </div>
+        <div>
+            <h3>Computer:</h3>
+            <span id="computer-score"></span>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>

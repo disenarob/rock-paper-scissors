@@ -6,6 +6,8 @@ rockBtn.addEventListener("click", () => game("Rock"));
 paperBtn.addEventListener("click", () => game("Paper"));
 scissorsBtn.addEventListener("click", () => game("Scissors"));
 
+let playerCount = 0;
+let computerCount = 0;
 
 function computerPlay(){
     let draw = "";
@@ -35,22 +37,26 @@ function playRound(playerSelection, computerSelection){
                     break;
                 case "Paper":
                     message = "Paper beats rock. Computer wins!";
+                    computerCount++;
                     break;
                 case  "Scissors":
                     message = "Rock beats scissors. Player wins!";
+                    playerCount++;
                     break;
             }
         break;
         case "Paper":
             switch (computerSelection){
                 case "Rock":
-                    message = "Paper beats rock. Player wins!!";
+                    message = "Paper beats rock. Player wins!";
+                    playerCount++;
                     break;
                 case "Paper":
                     message = "Paper vs paper. Tie!";
                     break;
                 case  "Scissors":
                     message = "Scissors beats paper. Computer wins!";
+                    computerCount++;
                     break;
             }
             break;
@@ -58,9 +64,11 @@ function playRound(playerSelection, computerSelection){
             switch(computerSelection){
                 case "Rock":
                     message = "Rock beats scissors. Computer wins!";
+                    computerCount++;
                     break;
                 case "Paper":
                     message = "Scissors beats paper. Player wins!";
+                    playerCount++;
                     break;
                 case  "Scissors":
                     message = "Scisors vs scissors. Tie!";
@@ -74,8 +82,33 @@ function playRound(playerSelection, computerSelection){
 
 function displayMessage(msg){
     document.getElementById("message").innerHTML = msg;
-    document.getElementById("message").style.display = "block";
+    document.getElementById("message").style.visibility = "visible";
 }
+
+function count(){
+    playerScore = document.getElementById("player-score");
+    computerScore = document.getElementById("computer-score");
+
+    if(playerCount >= 5){
+        playerCount = 0;
+        computerCount = 0;
+        displayMessage("Player wins the game!");
+    }
+    else if(computerCount >= 5){
+        playerCount = 0;
+        computerCount = 0;
+        displayMessage("Computer wins the game!");
+    }
+
+    document.getElementById("results").style.display = "flex";
+    playerScore.innerHTML = playerCount;
+    computerScore.innerHTML = computerCount;
+
+
+}
+
+
 function game(player){
     displayMessage(playRound(player, computerPlay()));
+    count();
 }
