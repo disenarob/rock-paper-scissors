@@ -1,4 +1,11 @@
-document.onload = computerPlay();
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorsBtn = document.getElementById("scissors-btn");
+
+rockBtn.addEventListener("click", () => game("Rock"));
+paperBtn.addEventListener("click", () => game("Paper"));
+scissorsBtn.addEventListener("click", () => game("Scissors"));
+
 
 function computerPlay(){
     let draw = "";
@@ -14,13 +21,12 @@ function computerPlay(){
         draw = "Scissors";
     } 
     return draw;
-
-    
 }
 
 function playRound(playerSelection, computerSelection){
     let message;
-
+   
+    
     switch(playerSelection){
         case "Rock":
             switch(computerSelection){
@@ -34,6 +40,7 @@ function playRound(playerSelection, computerSelection){
                     message = "Rock beats scissors. Player wins!";
                     break;
             }
+        break;
         case "Paper":
             switch (computerSelection){
                 case "Rock":
@@ -46,6 +53,7 @@ function playRound(playerSelection, computerSelection){
                     message = "Scissors beats paper. Computer wins!";
                     break;
             }
+            break;
             case "Scissors":
             switch(computerSelection){
                 case "Rock":
@@ -58,7 +66,16 @@ function playRound(playerSelection, computerSelection){
                     message = "Scisors vs scissors. Tie!";
                     break;
             }
+            break;
     }
 
     return message;
+}
+
+function displayMessage(msg){
+    document.getElementById("message").innerHTML = msg;
+    document.getElementById("message").style.display = "block";
+}
+function game(player){
+    displayMessage(playRound(player, computerPlay()));
 }

@@ -1,0 +1,11 @@
+.game{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    padding-left:20%;
+    padding-right:20%;
+}
+#message{
+    display:none;
+}
