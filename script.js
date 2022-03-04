@@ -9,29 +9,29 @@ scissorsBtn.addEventListener("click", () => game("Scissors"));
 let playerCount = 0;
 let computerCount = 0;
 
-function computerPlay(){
+function computerPlay() {
     let draw = "";
     const num = Math.floor(Math.random() * 3);
 
-    if (num === 0){
+    if (num === 0) {
         draw = "Rock";
     }
-    else if(num === 1){
+    else if (num === 1) {
         draw = "Paper";
     }
-    else if(num === 2){
+    else if (num === 2) {
         draw = "Scissors";
-    } 
+    }
     return draw;
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection) {
     let message;
-   
-    
-    switch(playerSelection){
+
+
+    switch (playerSelection) {
         case "Rock":
-            switch(computerSelection){
+            switch (computerSelection) {
                 case "Rock":
                     message = "Rock vs rock. Tie!";
                     break;
@@ -39,14 +39,14 @@ function playRound(playerSelection, computerSelection){
                     message = "Paper beats rock. Computer wins!";
                     computerCount++;
                     break;
-                case  "Scissors":
+                case "Scissors":
                     message = "Rock beats scissors. Player wins!";
                     playerCount++;
                     break;
             }
-        break;
+            break;
         case "Paper":
-            switch (computerSelection){
+            switch (computerSelection) {
                 case "Rock":
                     message = "Paper beats rock. Player wins!";
                     playerCount++;
@@ -54,14 +54,14 @@ function playRound(playerSelection, computerSelection){
                 case "Paper":
                     message = "Paper vs paper. Tie!";
                     break;
-                case  "Scissors":
+                case "Scissors":
                     message = "Scissors beats paper. Computer wins!";
                     computerCount++;
                     break;
             }
             break;
-            case "Scissors":
-            switch(computerSelection){
+        case "Scissors":
+            switch (computerSelection) {
                 case "Rock":
                     message = "Rock beats scissors. Computer wins!";
                     computerCount++;
@@ -70,7 +70,7 @@ function playRound(playerSelection, computerSelection){
                     message = "Scissors beats paper. Player wins!";
                     playerCount++;
                     break;
-                case  "Scissors":
+                case "Scissors":
                     message = "Scisors vs scissors. Tie!";
                     break;
             }
@@ -80,21 +80,21 @@ function playRound(playerSelection, computerSelection){
     return message;
 }
 
-function displayMessage(msg){
+function displayMessage(msg) {
     document.getElementById("message").innerHTML = msg;
     document.getElementById("message").style.visibility = "visible";
 }
 
-function count(){
+function count() {
     playerScore = document.getElementById("player-score");
     computerScore = document.getElementById("computer-score");
 
-    if(playerCount >= 5){
+    if (playerCount >= 5) {
         playerCount = 0;
         computerCount = 0;
         displayMessage("Player wins the game!");
     }
-    else if(computerCount >= 5){
+    else if (computerCount >= 5) {
         playerCount = 0;
         computerCount = 0;
         displayMessage("Computer wins the game!");
@@ -108,7 +108,7 @@ function count(){
 }
 
 
-function game(player){
+function game(player) {
     displayMessage(playRound(player, computerPlay()));
     count();
 }
